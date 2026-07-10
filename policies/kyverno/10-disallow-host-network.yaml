@@ -1,0 +1,19 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: disallow-host-network
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+  - name: check-host-network
+    match:
+      resources:
+        kinds:
+        - Pod
+    validate:
+      message: "hostNetwork et hostPID sont interdits"
+      pattern:
+        spec:
+          hostNetwork: false
+          hostPID: false

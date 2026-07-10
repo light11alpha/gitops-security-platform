@@ -1,0 +1,19 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: disallow-untrusted-registries
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+  - name: check-registry
+    match:
+      resources:
+        kinds:
+        - Pod
+    validate:
+      message: "Seuls les registres docker.io, gcr.io et ghcr.io sont autorisés"
+      pattern:
+        spec:
+          containers:
+          - image: "docker.io/* | gcr.io/* | ghcr.io/*"

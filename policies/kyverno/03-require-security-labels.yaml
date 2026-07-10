@@ -1,0 +1,21 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-security-labels
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+  - name: check-security-labels
+    match:
+      resources:
+        kinds:
+        - Pod
+    validate:
+      message: "Les pods doivent avoir les labels app, tier et env"
+      pattern:
+        metadata:
+          labels:
+            app: "?*"
+            tier: "?*"
+            env: "?*"
