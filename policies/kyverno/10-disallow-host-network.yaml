@@ -15,5 +15,5 @@ spec:
       message: "hostNetwork et hostPID sont interdits"
       pattern:
         spec:
-          hostNetwork: false
-          hostPID: false
+          =(hostNetwork): false
+          =(hostPID): false

@@ -12,8 +12,8 @@ spec:
         kinds:
         - Pod
     validate:
-      message: "Seuls les registres docker.io, gcr.io et ghcr.io sont autorisés"
+      message: "Seuls les registres docker.io, gcr.io et ghcr.io sont autorisés (ou images sans registry explicite)"
       pattern:
         spec:
           containers:
-          - image: "docker.io/* | gcr.io/* | ghcr.io/*"
+          - image: "docker.io/* | gcr.io/* | ghcr.io/* | !*/*"
