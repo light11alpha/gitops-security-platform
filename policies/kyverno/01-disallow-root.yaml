@@ -11,6 +11,13 @@ spec:
       resources:
         kinds:
         - Pod
+    exclude:
+      resources:
+        namespaces:
+        - trivy-system
+        - kyverno
+        - argocd
+        - kube-system
     validate:
       message: "Les conteneurs doivent tourner avec runAsNonRoot: true"
       pattern:
@@ -19,7 +26,7 @@ spec:
             runAsNonRoot: true
           containers:
           - securityContext:
-              allowPrivilegeEscalation: false
+              =(allowPrivilegeEscalation): false
               capabilities:
                 drop:
                 - ALL

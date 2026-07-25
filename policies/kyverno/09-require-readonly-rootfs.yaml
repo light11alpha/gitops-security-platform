@@ -11,6 +11,13 @@ spec:
       resources:
         kinds:
         - Pod
+    exclude:
+      resources:
+        namespaces:
+        - trivy-system
+        - kyverno
+        - argocd
+        - kube-system
     validate:
       message: "Le filesystem root doit être en lecture seule (readOnlyRootFilesystem: true)"
       pattern:

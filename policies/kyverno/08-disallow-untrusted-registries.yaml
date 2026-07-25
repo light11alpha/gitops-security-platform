@@ -11,6 +11,13 @@ spec:
       resources:
         kinds:
         - Pod
+    exclude:
+      resources:
+        namespaces:
+        - trivy-system
+        - kyverno
+        - argocd
+        - kube-system
     validate:
       message: "Seuls les registres docker.io, gcr.io, ghcr.io et Docker Hub sont autorisés"
       pattern:
