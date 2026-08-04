@@ -18,6 +18,7 @@ spec:
         - kyverno
         - argocd
         - kube-system
+        - boutique
     validate:
       message: "Les pods doivent avoir les labels app, tier et env"
       pattern:

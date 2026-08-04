@@ -18,6 +18,7 @@ spec:
         - kyverno
         - argocd
         - kube-system
+        - boutique
     validate:
       message: "Seuls les registres docker.io, gcr.io, ghcr.io et Docker Hub sont autorisés"
       pattern:
